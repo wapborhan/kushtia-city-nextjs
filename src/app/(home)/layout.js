@@ -1,5 +1,5 @@
-import Footer from "./footer/Footer";
-import Header from "./header/Header";
+import Footer from "@/app/(home)/footer/Footer";
+import Header from "@/app/(home)/header/Header";
 
 export const metadata = {
   title: "Kushtia City",

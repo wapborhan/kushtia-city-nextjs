@@ -7,11 +7,12 @@ export const metadata = {
 };
 
 export default function WithLayout({ children }) {
+  const production = true;
   return (
-    <div>
-      <Header />
+    <>
+      {production ? "" : <Header />}
       {children}
-      <Footer />
-    </div>
+      {production ? "" : <Footer />}
+    </>
   );
 }

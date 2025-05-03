@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-const page = () => {
+const Soon = () => {
   return (
     <div
       className="h-screen flex flex-col gap-px justify-center items-center"
@@ -22,4 +22,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Soon;

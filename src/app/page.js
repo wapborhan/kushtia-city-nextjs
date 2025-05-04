@@ -7,10 +7,11 @@ import Services from "./home/services/Services";
 import Soon from "./home/soon";
 
 export default function Home() {
-  const production = false;
+  const production = process.env.IS_DEVELOPMENT;
+
   return (
     <>
-      {production ? (
+      {production === "true" ? (
         <Soon />
       ) : (
         <>

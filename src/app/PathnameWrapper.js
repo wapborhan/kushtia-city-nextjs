@@ -3,6 +3,7 @@ import { usePathname } from "next/navigation";
 import Footer from "../components/Footer";
 import Header from "@/components/Header";
 import { useEffect } from "react";
+import Soon from "./home/soon";
 
 export default function PathnameWrapper({ children }) {
   const pathname = usePathname();
@@ -22,9 +23,9 @@ export default function PathnameWrapper({ children }) {
 
   return (
     <body className={`home-electrician`}>
-      {pathname === "/" ? "" : <Header />}
+      {pathname === "/" ? null : <Header />}
       {children}
-      <Footer />
+      {pathname ? "" : <Footer />}
     </body>
   );
 }

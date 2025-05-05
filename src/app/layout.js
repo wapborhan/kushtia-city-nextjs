@@ -1,6 +1,6 @@
-import "@/app/global.css";
 import "@/app/assets/css/fontawesome.min.css";
 import "@/app/assets/css/style.css";
+import "@/app/global.css";
 import PathnameWrapper from "./PathnameWrapper";
 
 export const metadata = {

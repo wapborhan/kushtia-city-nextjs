@@ -9,12 +9,25 @@ const DoctorList = () => {
     {
       id: 2,
     },
+    {
+      id: 3,
+    },
+    {
+      id: 4,
+    },
+    {
+      id: 5,
+    },
   ];
 
   const doctorList = doctors.map((doctor, idx) => {
     return <DoctorCard key={idx} doctor={doctor} />;
   });
-  return <div className="grid grid-cols-2 gap-4">{doctorList}</div>;
+  return (
+    <div className="grid lg:grid-cols-2 grid-cols-1 gap-4 justify-center">
+      {doctorList}
+    </div>
+  );
 };
 
 export default DoctorList;

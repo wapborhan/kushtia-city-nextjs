@@ -31,7 +31,7 @@ const Footer = () => {
       <footer
         className="footer-wrapper footer-layout5"
         data-bg-src="images/bg/footer_bg_5.png"
-        style={{ backgroundImage: "url(assets/img/bg/footer_bg_5.png)" }}
+        style={{ backgroundImage: "url(/assets/img/bg/footer_bg_5.png)" }}
       >
         <div className="widget-area">
           <div className="container">
@@ -41,7 +41,7 @@ const Footer = () => {
                   <div className="th-widget-about">
                     <div className="about-logo">
                       <a href="home-handyman.html">
-                        <img src="assets/img/logo.png" alt="Kushtia City" />
+                        <img src="/assets/img/logo.png" alt="Kushtia City" />
                       </a>
                     </div>
 
@@ -62,7 +62,7 @@ const Footer = () => {
               <div className="col-md-6 col-xl-auto">
                 <div className="widget widget_nav_menu footer-widget">
                   <h3 className="widget_title">
-                    <img src="assets/img/icon/footer_title5.svg" alt="icon" />{" "}
+                    <img src="/assets/img/icon/footer_title5.svg" alt="icon" />{" "}
                     উপকারী লিংক
                   </h3>
                   <div className="menu-all-pages-container">
@@ -95,7 +95,7 @@ const Footer = () => {
               <div className="col-md-6 col-xl-auto">
                 <div className="widget widget_nav_menu footer-widget">
                   <h3 className="widget_title">
-                    <img src="assets/img/icon/footer_title5.svg" alt="icon" />{" "}
+                    <img src="/assets/img/icon/footer_title5.svg" alt="icon" />{" "}
                     সেবা সমূহ
                   </h3>
                   <div className="menu-all-pages-container">
@@ -128,7 +128,7 @@ const Footer = () => {
               <div className="col-md-6 col-xl-auto">
                 <div className="widget widget_nav_menu footer-widget">
                   <h3 className="widget_title">
-                    <img src="assets/img/icon/footer_title5.svg" alt="icon" />{" "}
+                    <img src="/assets/img/icon/footer_title5.svg" alt="icon" />{" "}
                     সেবা সমূহ
                   </h3>
                   <div className="menu-all-pages-container">

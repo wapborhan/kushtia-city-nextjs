@@ -52,7 +52,7 @@
 }
 
 .doctor-card .info .cont p {
-  @apply text-justify;
+  @apply text-justify mb-2;
 }
 
 .doctor-card .right {
@@ -60,13 +60,13 @@
 }
 
 .doctor-card .right .button {
-  @apply flex flex-col gap-2
+  @apply flex flex-col gap-2 w-full
 }
 
 .doctor-card .right .button .appoinment {
-  @apply border-[1px] border-[#fa2d39] py-[2px] px-3 rounded-md
+  @apply border-[1px] border-[#fa2d39] py-[2px] px-3 rounded-md cursor-pointer w-full
 }
 
 .doctor-card .right .button .profile {
-  @apply border-[1px] bg-[#fa2d39] text-white py-[2px] px-3 rounded-md
+  @apply border-[1px] bg-[#fa2d39] text-white py-[2px] px-3 rounded-md cursor-pointer w-full text-center
 }

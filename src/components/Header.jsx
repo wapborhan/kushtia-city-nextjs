@@ -1,8 +1,12 @@
+"use client";
 import { navData } from "@/app/home/header/headData";
 import TopBar from "@/app/home/header/TopBar";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const Header = () => {
+  const pathname = usePathname();
+
   return (
     <header className="th-header header-layout1">
       <TopBar />
@@ -14,7 +18,7 @@ const Header = () => {
                 <div className="header-logo">
                   <Link href="/">
                     <img
-                      src="assets/img/logo.png"
+                      src="/assets/img/logo.png"
                       style={{ width: "170px" }}
                       alt="Kushtia City"
                     />
@@ -28,9 +32,15 @@ const Header = () => {
                       <Link href="/">নীড় পাতা</Link>
                     </li>
                     {navData.map(({ id, link, name }) => {
+                      const isActive = pathname === link;
                       return (
                         <li key={id}>
-                          <Link href={link}>{name}</Link>
+                          <Link
+                            href={link}
+                            className={isActive ? "active" : ""}
+                          >
+                            {name}
+                          </Link>
                         </li>
                       );
                     })}

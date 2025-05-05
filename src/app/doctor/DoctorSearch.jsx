@@ -25,7 +25,7 @@ const DoctorSearch = () => {
               </p> */}
               <div className="my-12">
                 <div className="find-doctor container">
-                  <form className="grid grid-cols-12 gap-5 form-group">
+                  <form className="grid lg:grid-cols-12 grid-cols-6 gap-5 form-group">
                     <div className="col-span-3 form-group">
                       <input
                         type="text"

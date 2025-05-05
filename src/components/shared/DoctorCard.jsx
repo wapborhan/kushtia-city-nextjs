@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const DoctorCard = ({ doctor }) => {
   return (
     <div className="doctor-card relative">
@@ -33,11 +35,13 @@ const DoctorCard = ({ doctor }) => {
         </div>
         <div className="button">
           <button className="appoinment">Appoinment</button>
-          <button className="profile">View Profile</button>
+          <Link href={`/doctor/15`} className="profile">
+            View Profile
+          </Link>
         </div>
       </div>
       <div className="verified">
-        <span>verified</span>
+        <span className="capitalize">Pathologist</span>
       </div>
     </div>
   );

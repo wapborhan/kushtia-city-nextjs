@@ -11,10 +11,10 @@ const Donar = () => {
       }}
     >
       <div className="container">
-        <div className="flex justify-between items-center">
+        <div className="flex justify-center items-center">
           <div className="col-xl-6 col-lg-8">
             <div className="title-area text-center">
-              <span className="sub-title2 flex">
+              <span className="sub-title2">
                 <span className="line"></span>
                 <img src="assets/img/theme-img/title_icon5.svg" alt="shape" />
                 রক্তের প্রয়োজন

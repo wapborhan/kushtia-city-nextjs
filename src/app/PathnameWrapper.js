@@ -25,7 +25,7 @@ export default function PathnameWrapper({ children }) {
     <body className={`home-electrician`}>
       {pathname === "/" ? null : <Header />}
       {children}
-      {pathname ? "" : <Footer />}
+      <Footer />
     </body>
   );
 }

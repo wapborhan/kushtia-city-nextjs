@@ -11,20 +11,20 @@ const About = () => {
           <div className="col-xl-5 col-span-5">
             <div className="img-box2">
               <div className="img1">
-                <img src="assets/img/normal/why_1.jpg" alt="Why" />
+                <img src="assets/img/normal/donating-blood.webp" alt="Why" />
               </div>
               <Link
                 href="https://www.youtube.com/watch?v=_sI_Ps7JSEk"
                 className="play-btn popup-video"
               >
-                <i className="fas fa-play"></i>
+                {/* <i className="fas fa-play"></i> */}
               </Link>
             </div>
           </div>
           <div className="col-xl-7 col-span-7 text-left space-extra">
             <div className="ps-xl-5 pb-30 pb-lg-0">
               <div className="title-area">
-                <span className="sub-title flex">
+                <span className="sub-title">
                   <img src="assets/img/theme-img/title_icon.svg" alt="shape" />
                   ডোনার
                 </span>

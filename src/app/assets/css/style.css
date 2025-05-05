@@ -896,10 +896,11 @@
   --icon-font: "Font Awesome 6 Pro";
   --main-container: 1320px;
   --container-gutters: 24px;
-  --section-space: 120px;
+  --section-space: 60px;
   --section-space-mobile: 80px;
   --section-title-space: 60px;
   --ripple-ani-duration: 5s;
+  --bs-gutter-x: 1px;
 }
 
 .home-electrician {
@@ -3598,6 +3599,7 @@ textarea.is-invalid {
 
 .sub-title2 img {
   margin: -4px 8px 0 0;
+  display: inline-block;
 }
 
 @media (max-width: 1199px) {
@@ -3656,6 +3658,10 @@ textarea.is-invalid {
 .title-area .th-btn {
   margin-top: 20px;
   margin-bottom: 10px;
+}
+
+.title-area .sub-title img {
+display: inline-block
 }
 
 .mb-32 {

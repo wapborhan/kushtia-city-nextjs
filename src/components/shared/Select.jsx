@@ -10,15 +10,13 @@ const Select = ({ name, setData, disableCon, data }) => {
         const name = e.target.value;
         setData({ id, name });
       }}
+      defaultValue={name}
       disabled={!disableCon}
     >
-      <option selected className="capitalize">
-        {name}
-      </option>
       {data &&
         data.map(({ id, name }) => {
           return (
-            <option value={name} id={id} key={name}>
+            <option value={name} id={id} key={id}>
               {name}
             </option>
           );

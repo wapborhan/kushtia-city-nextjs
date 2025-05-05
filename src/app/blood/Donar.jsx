@@ -41,7 +41,7 @@ const Donar = () => {
           <div className="flex justify-center">
             <div className="col-xl-8 col-md-10">
               <div className="title-area text-center">
-                <span className="sub-title flex  items-center">
+                <span className="sub-title">
                   <img src="assets/img/theme-img/title_icon.svg" alt="Icon" />
                   রক্তদাতা খুজুন
                 </span>

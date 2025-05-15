@@ -20,18 +20,14 @@ export const navData = [
     name: "হাসপাতাল",
     link: "/hospital",
   },
+
   {
     id: 5,
-    name: "ডায়াগনস্টিক",
-    link: "/diagnostic",
-  },
-  {
-    id: 6,
     name: "ফায়ার সার্ভিস",
     link: "/fire-services",
   },
   {
-    id: 7,
+    id: 6,
     name: "থানা-পুলিশ",
     link: "/police-station",
   },

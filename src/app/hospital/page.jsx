@@ -4,11 +4,11 @@ import HospitalSearch from "./HospitalSearch";
 
 const page = () => {
   return (
-    <div>
+    <>
       <BreadCumb title="হাসপাতাল" />
       <HospitalSearch />
       <Hospital />
-    </div>
+    </>
   );
 };
 

@@ -6,13 +6,13 @@ import BloodRequest from "./BloodRequest";
 
 const Blood = () => {
   return (
-    <div className="">
+    <>
       <BreadCumb title="রক্ত" />
       <Hero />
       <About />
       <BloodRequest />
       <Donar />
-    </div>
+    </>
   );
 };
 

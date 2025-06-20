@@ -1,9 +1,9 @@
 "use client";
+
 import { usePathname } from "next/navigation";
-import Footer from "../components/Footer";
+import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import { useEffect } from "react";
-import Soon from "./home/soon";
 
 export default function PathnameWrapper({ children }) {
   const pathname = usePathname();
@@ -21,11 +21,15 @@ export default function PathnameWrapper({ children }) {
     }
   }, [pathname]);
 
+  // Define routes where you don't want Header/Footer
+  const hideHeaderFooterRoutes = ["/", "/auth/signin", "/auth/signup"];
+  const shouldHideHeaderFooter = hideHeaderFooterRoutes.includes(pathname);
+
   return (
     <body className={`home-electrician`}>
-      {pathname === "/" ? null : <Header />}
+      {!shouldHideHeaderFooter && <Header />}
       {children}
-      <Footer />
+      {!shouldHideHeaderFooter && <Footer />}
     </body>
   );
 }

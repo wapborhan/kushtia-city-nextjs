@@ -2,6 +2,7 @@ import "@/app/assets/css/fontawesome.min.css";
 import "@/app/assets/css/style.css";
 import "@/app/global.css";
 import PathnameWrapper from "./PathnameWrapper";
+import AuthProvider from "@/utils/AuthProvider";
 
 export const metadata = {
   title: "কুষ্টিয়া সিটি",
@@ -11,7 +12,9 @@ export const metadata = {
 export default async function RootLayout({ children }) {
   return (
     <html lang="en">
-      <PathnameWrapper>{children}</PathnameWrapper>
+      <AuthProvider>
+        <PathnameWrapper>{children}</PathnameWrapper>
+      </AuthProvider>
     </html>
   );
 }

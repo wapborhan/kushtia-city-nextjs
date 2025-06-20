@@ -1,10 +1,11 @@
-// import useAuth from "../../../../hooks/useAuth";
+"use client";
 
+import useAuth from "@/hooks/useAuth";
 import Link from "next/link";
 
 const TopBar = () => {
-  // const { user } = useAuth();
-  const user = false;
+  const { user } = useAuth();
+  // const user = false;
 
   const d = new Date();
   const date = `${d.toLocaleString("bn-BD", {
@@ -46,7 +47,7 @@ const TopBar = () => {
                 </li>
                 <li>
                   <i className="fas fa-user"></i>
-                  <Link href={user ? "/dashboard" : "/signin"}>
+                  <Link href={user ? "/dashboard" : "/auth/signin"}>
                     {user ? "ড্যাশবোর্ড" : "সাইন ইন"}
                   </Link>
                 </li>

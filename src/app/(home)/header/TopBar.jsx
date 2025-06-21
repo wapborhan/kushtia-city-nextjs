@@ -39,11 +39,13 @@ const TopBar = () => {
               <ul>
                 <li className="d-none d-md-inline-block">
                   <i className="fas fa-messages"></i>{" "}
-                  <a href="faq.html">জিজ্ঞাসা</a>
+                  <Link href="faq">জিজ্ঞাসা</Link>
                 </li>
                 <li>
                   <i className="fas fa-headset"></i>
-                  <a href="contact.html">সাপোর্ট</a>
+                  <Link href="https://chat.whatsapp.com/FoGovuB7fdeCiJAabCL19z">
+                    সাপোর্ট
+                  </Link>
                 </li>
                 <li>
                   <i className="fas fa-user"></i>

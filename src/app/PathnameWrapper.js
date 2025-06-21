@@ -3,13 +3,22 @@
 import { usePathname } from "next/navigation";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import Preloader from "@/components/Preloader";
 
 export default function PathnameWrapper({ children }) {
   const pathname = usePathname();
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    setIsLoading(true);
     window.scrollTo(0, 0);
+
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 500); // adjust timing to match Preloader component
+
+    return () => clearTimeout(timer);
   }, [pathname]);
 
   useEffect(() => {
@@ -21,15 +30,17 @@ export default function PathnameWrapper({ children }) {
     }
   }, [pathname]);
 
-  // Define routes where you don't want Header/Footer
-  const hideHeaderFooterRoutes = ["/", "/auth/signin", "/auth/signup"];
-  const shouldHideHeaderFooter = hideHeaderFooterRoutes.includes(pathname);
+  const hideHeaderRoutes = ["/", "/auth/signin", "/auth/signup"];
+  const hideFooterRoutes = ["/auth/signin", "/auth/signup"];
+  const shouldHideHeader = hideHeaderRoutes.includes(pathname);
+  const shouldHideFooter = hideFooterRoutes.includes(pathname);
 
   return (
-    <body className={`home-electrician`}>
-      {!shouldHideHeaderFooter && <Header />}
+    <body className="home-electrician">
+      {isLoading && <Preloader />}
+      {!shouldHideHeader && <Header />}
       {children}
-      {!shouldHideHeaderFooter && <Footer />}
+      {!shouldHideFooter && <Footer />}
     </body>
   );
 }

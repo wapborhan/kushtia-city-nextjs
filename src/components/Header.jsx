@@ -1,6 +1,6 @@
 "use client";
-import { navData } from "@/app/home/header/headData";
-import TopBar from "@/app/home/header/TopBar";
+import { navData } from "@/app/(home)/header/headData";
+import TopBar from "@/app/(home)/header/TopBar";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 

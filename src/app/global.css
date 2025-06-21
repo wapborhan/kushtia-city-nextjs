@@ -60,13 +60,13 @@
 }
 
 .doctor-card .right .button {
-  @apply flex flex-col gap-2 w-full
+  @apply flex flex-col gap-2 w-full;
 }
 
 .doctor-card .right .button .appoinment {
-  @apply border-[1px] border-[#fa2d39] py-[2px] px-3 rounded-md cursor-pointer w-full
+  @apply border-[1px] border-[#fa2d39] py-[2px] px-3 rounded-md cursor-pointer w-full;
 }
 
 .doctor-card .right .button .profile {
-  @apply border-[1px] bg-[#fa2d39] text-white py-[2px] px-3 rounded-md cursor-pointer w-full text-center
+  @apply border-[1px] bg-[#fa2d39] text-white py-[2px] px-3 rounded-md cursor-pointer w-full text-center;
 }

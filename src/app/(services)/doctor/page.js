@@ -6,7 +6,7 @@ const page = () => {
   return (
     <>
       <BreadCumb title="ডাক্তার" />
-      <DoctorSearch />
+      {/* <DoctorSearch /> */}
     </>
   );
 };

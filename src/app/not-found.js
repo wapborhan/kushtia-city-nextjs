@@ -1,4 +1,4 @@
-import Soon from "./home/soon";
+import Soon from "./(home)/soon";
 
 const page = () => {
   return (

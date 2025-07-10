@@ -7,7 +7,7 @@ const Donar = () => {
       className="overflow-hidden space"
       id="team-sec"
       style={{
-        background: "url(assets/img/bg/team_bg_1.jpg)",
+        background: "url(/assets/img/bg/team_bg_1.jpg)",
       }}
     >
       <div className="container">
@@ -16,7 +16,7 @@ const Donar = () => {
             <div className="title-area text-center">
               <span className="sub-title2">
                 <span className="line"></span>
-                <img src="assets/img/theme-img/title_icon5.svg" alt="shape" />
+                <img src="/assets/img/theme-img/title_icon5.svg" alt="shape" />
                 রক্তের প্রয়োজন
               </span>
             </div>

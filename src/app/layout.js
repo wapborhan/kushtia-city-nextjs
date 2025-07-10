@@ -80,7 +80,9 @@ export const metadata = {
 export default async function RootLayout({ children }) {
   return (
     <html lang="en">
-      <AuthProvider>{children}</AuthProvider>
+      <body className="home-electrician">
+        <AuthProvider>{children}</AuthProvider>
+      </body>
     </html>
   );
 }

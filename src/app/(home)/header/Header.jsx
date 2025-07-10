@@ -14,7 +14,7 @@ const Header = () => {
                 <div className="header-logo">
                   <a href="home-handyman.html">
                     <img
-                      src="assets/img/logo-tertiary.png"
+                      src="/assets/img/logo-tertiary.png"
                       style={{ width: "250px" }}
                       alt="KushtiaCity"
                     />
@@ -26,7 +26,7 @@ const Header = () => {
                   <div className="header-logo hidden">
                     <a href="home-handyman.html">
                       <img
-                        src="assets/img/logo-tertiary.png"
+                        src="/assets/img/logo-tertiary.png"
                         alt="KushtiaCity"
                       />
                     </a>

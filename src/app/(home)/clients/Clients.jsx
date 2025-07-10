@@ -43,7 +43,7 @@ const Clients = () => {
           ].map((logo, idx) => (
             <SwiperSlide key={idx}>
               <div className="brand-card">
-                <img src={`assets/img/brand/${logo}`} alt="Brand Logo" />
+                <img src={`/assets/img/brand/${logo}`} alt="Brand Logo" />
               </div>
             </SwiperSlide>
           ))}

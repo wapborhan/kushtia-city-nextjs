@@ -7,7 +7,7 @@ const ServiceList = () => {
             <div className="service-block">
               <div className="box-img">
                 <img
-                  src={`assets/img/service/service_block_${item}.jpg`}
+                  src={`/assets/img/service/service_block_${item}.jpg`}
                   alt="Service"
                 />
               </div>
@@ -17,7 +17,7 @@ const ServiceList = () => {
               <div className="box-content">
                 <div className="box-icon flex justify-center items-center">
                   <img
-                    src={`assets/img/icon/service_block_${item}.svg`}
+                    src={`/assets/img/icon/service_block_${item}.svg`}
                     alt="Icon"
                   />
                 </div>

@@ -6,9 +6,9 @@ const Services = () => {
     <section
       className="overflow-hidden space"
       id="service-sec"
-      data-bg-src="assets/img/bg/service_bg_5.png"
+      data-bg-src="/assets/img/bg/service_bg_5.png"
       style={{
-        backgroundImage: "url(assets/img/bg/service_bg_5.png)",
+        backgroundImage: "url(/assets/img/bg/service_bg_5.png)",
       }}
     >
       <div className="container">
@@ -18,7 +18,7 @@ const Services = () => {
               <span className="sub-title2 flex">
                 <span className="line"></span>
                 <img
-                  src="assets/img/theme-img/title_icon5_white.svg"
+                  src="/assets/img/theme-img/title_icon5_white.svg"
                   alt="shape"
                 />
                 শীর্ষ সার্ভিস সুমুহ

@@ -8,11 +8,11 @@ const About = () => {
           <div className="col-span-2 mb-35 mb-xl-0 order-2">
             <div className="img-box5">
               <div className="img1">
-                <img src="assets/img/normal/about_5.png" alt="About" />
+                <img src="/assets/img/normal/about_5.png" alt="About" />
               </div>
               <div className="customer-box">
                 <div className="box-img">
-                  <img src="assets/img/normal/avaters.png" alt="About" />
+                  <img src="/assets/img/normal/avaters.png" alt="About" />
                 </div>
                 <div className="media-body" title="আদমশুমারী ও গৃহগণনা ২০১১">
                   <h4 className="box-title">
@@ -27,7 +27,10 @@ const About = () => {
             <div className="pe-xxl-5">
               <div className="title-area mb-37">
                 <span className="sub-title2 flex">
-                  <img src="assets/img/theme-img/title_icon5.svg" alt="shape" />
+                  <img
+                    src="/assets/img/theme-img/title_icon5.svg"
+                    alt="shape"
+                  />
                   এক নজরে
                 </span>
                 <h2 className="sec-title mb-5">কুষ্টিয়া জেলা সম্পর্কে</h2>

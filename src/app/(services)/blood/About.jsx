@@ -4,14 +4,14 @@ const About = () => {
   return (
     <div className="overflow-hidden bg-white">
       <div className="shape-mockup spin" data-top="5%" data-right="0%">
-        <img src="assets/img/shape/lines_1.png" alt="shape" />
+        <img src="/assets/img/shape/lines_1.png" alt="shape" />
       </div>
       <div className="container">
         <div className="grid grid-cols-12 gap-10">
           <div className="col-xl-5 col-span-5">
             <div className="img-box2">
               <div className="img1">
-                <img src="assets/img/normal/donating-blood.webp" alt="Why" />
+                <img src="/assets/img/normal/donating-blood.webp" alt="Why" />
               </div>
               <Link
                 href="https://www.youtube.com/watch?v=_sI_Ps7JSEk"

@@ -36,11 +36,11 @@ export default function PathnameWrapper({ children }) {
   const shouldHideFooter = hideFooterRoutes.includes(pathname);
 
   return (
-    <body className="home-electrician">
+    <>
       {isLoading && <Preloader />}
       {!shouldHideHeader && <Header />}
       {children}
       {!shouldHideFooter && <Footer />}
-    </body>
+    </>
   );
 }

@@ -9,9 +9,9 @@ const Blood = () => {
     <>
       <BreadCumb title="রক্ত" />
       <Hero />
-      {/* <About /> */}
-      {/* <BloodRequest /> */}
-      {/* <Donar /> */}
+      <About />
+      <BloodRequest />
+      <Donar />
     </>
   );
 };

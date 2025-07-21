@@ -1,17 +1,31 @@
+import useAuth from "@/hooks/useAuth";
 import "./SocialSignIn.css";
+import { useRouter } from "next/navigation";
 
 const SocialSignIn = () => {
+  const { googleSignIn } = useAuth();
+  const navigate = useRouter();
+
   const handleGoogleSignIn = () => {
     // Handle Google sign-in logic here
-    alert("Google Sign-In Option Coming Soon!");
+    googleSignIn()
+      .then((result) => {
+        const user = result.user;
+        if (user) {
+          navigate.push("/");
+        }
+      })
+      .catch((error) => {
+        console.error("Error signing in with Google:", error);
+      });
   };
   return (
     <div
       className="social-signins th-btns flex items-center justify-center rounded-10 cursor-pointer w-full h-full"
       onClick={handleGoogleSignIn}
     >
-      <button className="bg-[#3B9DF8] text-white rounded-md py-3 pl-1 pr-1 flex items-center gap-[10px] text-[1rem] hover:bg-blue-500 transition-all duration-200 w-full h-fit">
-        <div className="py-2 px-2.5 rounded-l-md bg-white cursor-pointer">
+      <div className="bg-[#3B9DF8] text-white rounded-md py-2 pl-1 pr-1 flex items-center gap-[10px] text-[1rem] hover:bg-blue-500 transition-all duration-200 w-full h-fit">
+        <div className="py-3 px-6 rounded-l-md bg-white cursor-pointer">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 48 48"
@@ -36,7 +50,7 @@ const SocialSignIn = () => {
           </svg>
         </div>
         Sign in with Google
-      </button>
+      </div>
     </div>
   );
 };

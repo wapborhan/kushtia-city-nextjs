@@ -37,8 +37,19 @@ const Header = () => {
                         <Link href="/">নীড় পাতা</Link>
                       </li>
                       {navData &&
-                        navData.map(({ id, link, name }) => {
-                          return (
+                        navData.map(({ id, link, name, subMenu }) => {
+                          return subMenu ? (
+                            <li className="menu-item-has-children" key={id}>
+                              <a href={"#"}>{name}</a>
+                              <ul className="sub-menu">
+                                {subMenu.map(({ id, link, name }) => (
+                                  <li key={id}>
+                                    <Link href={link}>{name}</Link>
+                                  </li>
+                                ))}
+                              </ul>
+                            </li>
+                          ) : (
                             <li key={id}>
                               <Link href={link}>{name}</Link>
                             </li>

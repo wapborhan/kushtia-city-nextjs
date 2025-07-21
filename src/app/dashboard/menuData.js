@@ -2,7 +2,7 @@ export const menuData = [
   {
     label: "ড্যাশবোর্ড",
     icon: "fa-chart-simple",
-    path: "/dashboard",
+    path: "",
   },
   {
     label: "উদ্যোক্তা",
@@ -28,23 +28,23 @@ export const menuData = [
     subMenu: [
       {
         label: "রক্তদাতা যোগ করুন",
-        path: "/donar/add",
+        path: "donar/add",
         icon: "fa-circle-plus",
       },
 
       {
         label: "অনুরোধ যোগ করুন",
-        path: "/blood/req",
+        path: "blood/req",
         icon: "fa-circle-plus",
       },
       {
         label: "রক্তদাতা তালিকা",
-        path: "/donar/view",
+        path: "donar/view",
         icon: "fa-eye",
       },
       {
         label: "অনুরোধ তালিকা",
-        path: "/blood/req/view",
+        path: "blood/req/view",
         icon: "fa-eye",
       },
     ],
@@ -56,66 +56,58 @@ export const menuData = [
     subMenu: [
       {
         label: "ডাক্তার যোগ করুন",
-        path: "/doctor/add",
+        path: "doctor/add",
         icon: "fa-circle-plus",
       },
       {
         label: "হাসপাতাল যোগ করুন",
-        path: "/hospital/add",
+        path: "hospital/add",
         icon: "fa-circle-plus",
       },
       {
         label: "ডায়াগনস্টিক যোগ করুন",
-        path: "/diagnostic/add",
+        path: "diagnostic/add",
         icon: "fa-circle-plus",
       },
       {
         label: "ডাক্তার তালিকা",
-        path: "/doctor/view",
+        path: "doctor/view",
         icon: "fa-eye",
       },
       {
         label: "হাসপাতাল তালিকা",
-        path: "/hospital/view",
+        path: "hospital/view",
         icon: "fa-eye",
       },
       {
         label: "ডায়াগনস্টিক তালিকা",
-        path: "/diagnostic/view",
+        path: "diagnostic/view",
         icon: "fa-eye",
       },
     ],
   },
   {
-    label: "ফায়ার সার্ভিস",
-    icon: "fa-fire-extinguisher",
-    subMenu: [
-      {
-        label: "ফায়ার স্টেশন যোগ ",
-        path: "/fire/add",
-        icon: "fa-circle-plus",
-      },
-
-      {
-        label: "ফায়ার স্টেশন তালিকা",
-        path: "/fire/view",
-        icon: "fa-eye",
-      },
-    ],
-  },
-
-  {
-    label: "থানা-পুলিশ",
+    label: "প্রশাসন",
     icon: "fa-user-police",
     subMenu: [
       {
         label: "থানা যোগ করুন",
-        path: "/police/add",
+        path: "police/add",
+        icon: "fa-circle-plus",
+      },
+      {
+        label: "ফায়ার স্টেশন যোগ ",
+        path: "fire-station/add",
         icon: "fa-circle-plus",
       },
       {
         label: "থানা তালিকা",
-        path: "/police/view",
+        path: "police/view",
+        icon: "fa-eye",
+      },
+      {
+        label: "ফায়ার স্টেশন তালিকা",
+        path: "fire-station/view",
         icon: "fa-eye",
       },
     ],
@@ -126,12 +118,12 @@ export const menuData = [
     subMenu: [
       {
         label: "বিদ্যুৎ অফিস যোগ করুন",
-        path: "/electricity/add",
+        path: "electricity/add",
         icon: "fa-circle-plus",
       },
       {
         label: "বিদ্যুৎ অফিস তালিকা",
-        path: "/electricity/view",
+        path: "electricity/view",
         icon: "fa-eye",
       },
     ],
@@ -142,12 +134,12 @@ export const menuData = [
     subMenu: [
       {
         label: "ব্যাংক যোগ করুন",
-        path: "/bank/add",
+        path: "bank/add",
         icon: "fa-circle-plus",
       },
       {
         label: "ব্যাংক তালিকা",
-        path: "/bank/view",
+        path: "bank/view",
         icon: "fa-eye",
       },
     ],
@@ -158,22 +150,22 @@ export const menuData = [
     subMenu: [
       {
         label: "হোটেল যোগ করুন",
-        path: "/hotel/add",
+        path: "hotel/add",
         icon: "fa-circle-plus",
       },
       {
         label: "রেস্টুরেন্ট যোগ করুন",
-        path: "/restaurant/add",
+        path: "restaurant/add",
         icon: "fa-circle-plus",
       },
       {
         label: "হোটেল তালিকা",
-        path: "/hotel/view",
+        path: "hotel/view",
         icon: "fa-eye",
       },
       {
         label: "রেস্টুরেন্ট তালিকা",
-        path: "/restaurant/view",
+        path: "restaurant/view",
         icon: "fa-eye",
       },
     ],
@@ -184,22 +176,22 @@ export const menuData = [
     subMenu: [
       {
         label: "বাসা ভাড়া যোগ করুন",
-        path: "/house-rent/add",
+        path: "house-rent/add",
         icon: "fa-circle-plus",
       },
       {
         label: "গাড়ী ভাড়া যোগ করুন",
-        path: "/car-rent/add",
+        path: "car-rent/add",
         icon: "fa-circle-plus",
       },
       {
         label: "বাসা ভাড়া তালিকা",
-        path: "/house-rent/view",
+        path: "house-rent/view",
         icon: "fa-eye",
       },
       {
         label: "গাড়ী ভাড়া তালিকা",
-        path: "/car-rent/view",
+        path: "car-rent/view",
         icon: "fa-eye",
       },
     ],
@@ -207,6 +199,6 @@ export const menuData = [
   {
     label: "ব্যবহারকারী",
     icon: "fa-users",
-    path: "/staff/view",
+    path: "users",
   },
 ];

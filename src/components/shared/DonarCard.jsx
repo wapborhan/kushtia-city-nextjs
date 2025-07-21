@@ -8,11 +8,11 @@ const DonarCard = ({ data }) => {
       </div>
       <div className="icons">
         <a href={`tel:${connect}`} className="icon-btn arrow-icon">
-          <i className="fal fa-phone"></i>
+          <i className="fal fa-arrow-right"></i>
         </a>{" "}
-        <a href={`sms:${connect}`} className="icon-btn arrow-icon">
+        {/* <a href={`sms:${connect}`} className="icon-btn arrow-icon">
           <i className="fas fa-envelope"></i>
-        </a>
+        </a> */}
       </div>
       <div className="box-content">
         <span className="icon-btn whatsapp">{bloodGroup}</span>

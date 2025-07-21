@@ -7,7 +7,6 @@ import { useState } from "react";
 import SocialSignIn from "../signin/SocialSignIn";
 import useAxiosPublic from "@/hooks/useAxiosPublic";
 import useAuth from "@/hooks/useAuth";
-// import { TbLoader3 } from "react-icons/tb";
 
 const SignUp = () => {
   const axiosPublic = useAxiosPublic();
@@ -15,41 +14,64 @@ const SignUp = () => {
   const {
     handleSubmit,
     register,
+    watch,
     formState: { errors },
   } = useForm();
   const { createUser, updateUserProfile } = useAuth();
   const router = useRouter();
 
-  const onSubmit = (formData) => {
+  const password = watch("password");
+  const confirmPassword = watch("confirmPassword");
+
+  const isPasswordMismatch = confirmPassword && password !== confirmPassword;
+
+  const onSubmit = async (formData) => {
+    if (formData.password !== formData.confirmPassword) {
+      console.error("Confirm password does not match.");
+      return;
+    }
+
     setLoading(true);
-    createUser(formData.email, formData.password)
-      .then((result) => {
-        const loggedUser = result.user;
-        updateUserProfile(
-          formData.username,
-          "https://raw.githubusercontent.com/wapborhan/kushtiabd-client/refs/heads/main/public/images/avatar.png"
-        )
-          .then(() => {
-            const userInfo = {
-              username: formData.username,
-              photo: formData.photoURL,
-              email: formData.email,
-              badge: "bronze",
-              role: "user",
-            };
-            setLoading(false);
-            console.log(userInfo);
+
+    try {
+      // Create user with email & password
+      const result = await createUser(formData.email, formData.password);
+      const loggedUser = result.user;
+
+      // Update display name
+      await updateUserProfile(formData.username);
+
+      // Prepare user info to save in DB
+      const userInfo = {
+        userName: formData.username,
+        email: formData.email,
+        photo: "",
+        gender: "",
+        badge: "",
+        contNum: "",
+        address: "",
+        role: "user",
+        status: "inactive",
+        bloodGroup: "",
+      };
+
+      await axiosPublic
+        .post("/api/users", userInfo)
+        .then((response) => {
+          if (response.status === 200) {
             router.push("/");
-          })
-          .catch((error) => {
-            console.error(error);
-            setLoading(false);
-          });
-      })
-      .catch((error) => {
-        console.error(error);
-        setLoading(false);
-      });
+          } else {
+            console.error("Failed to create user:", response.data.error);
+          }
+        })
+        .catch((error) => {
+          console.error("Error creating user:", error);
+        });
+    } catch (error) {
+      console.error("Signup error:", error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -66,8 +88,7 @@ const SignUp = () => {
     >
       <div className="container">
         <div className="grid grid-cols-12">
-          <div className="col-span-1"></div>
-          <div className="col-span-6 offset-xl-1 text-left">
+          <div className="col-span-7 offset-xl-1 text-left">
             <Link
               href="/"
               className="flex items-center justify-center gap-2 mb-5"
@@ -104,44 +125,55 @@ const SignUp = () => {
               onSubmit={handleSubmit(onSubmit)}
               className="input-transparent ajax-contact"
             >
-              <div className="row">
-                <div className="form-group col-md-12">
+              <div className="row grid grid-cols-12 gap-4">
+                {/* Line 1: Username and Email */}
+                <div className="form-group col-span-6">
                   <div className="flex justify-between items-center">
-                    <label className="text-sm font-semibold">ইউজারনেম</label>
+                    {" "}
+                    <label className="text-sm font-semibold">
+                      ইউজারনেম
+                    </label>{" "}
                     {errors.username && (
-                      <span className="text-red-600">ইউজারনেম আবশ্যক</span>
+                      <p className="!text-red-600 text-sm !m-0">
+                        ইউজারনেম আবশ্যক
+                      </p>
                     )}
                   </div>
+
                   <input
                     type="text"
                     className="form-control"
                     placeholder="ইউজারনেম"
                     {...register("username", { required: true })}
-                    autoFocus
                   />
                 </div>
 
-                <div className="form-group col-md-12">
-                  <label className="text-sm font-semibold">ইমেল</label>
+                <div className="form-group col-span-6">
+                  <div className="flex justify-between items-center">
+                    <label className="text-sm font-semibold">ইমেল</label>{" "}
+                    {errors.email && (
+                      <p className="!text-red-600 text-sm !m-0">ইমেল আবশ্যক</p>
+                    )}
+                  </div>
                   <input
                     type="email"
                     className="form-control"
                     placeholder="ইমেল"
                     {...register("email", { required: true })}
                   />
-                  {errors.email && (
-                    <span className="text-red-600">ইমেল আবশ্যক</span>
-                  )}
                 </div>
 
-                <div className="form-group col-md-12">
-                  <div className="flex items-center justify-between">
-                    <label
-                      htmlFor="password"
-                      className="text-sm font-semibold text-gray-500"
-                    >
-                      পাসওয়ার্ড
-                    </label>
+                {/* Line 2: First Name, Last Name, Password, Confirm Password */}
+
+                <div className="form-group col-span-6">
+                  <div className="flex gap-2 justify-between items-center">
+                    <label className="text-sm font-semibold">পাসওয়ার্ড</label>
+                    {errors.password && (
+                      <p className="!text-red-600 text-sm !m-0">
+                        অবশ্যই বড় হাতের অক্ষর, ছোট হাতের অক্ষর, সংখ্যা ও বিশেষ
+                        অক্ষর (!@#$&*) থাকতে হবে।
+                      </p>
+                    )}
                   </div>
 
                   <input
@@ -156,51 +188,52 @@ const SignUp = () => {
                         /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/,
                     })}
                   />
-
-                  {errors.password?.type === "required" && (
-                    <p className="text-red-600">পাসওয়ার্ড আবশ্যক</p>
-                  )}
-                  {errors.password?.type === "minLength" && (
-                    <p className="text-red-600">
-                      পাসওয়ার্ড কমপক্ষে ৬ অক্ষরের হতে হবে।
-                    </p>
-                  )}
-                  {errors.password?.type === "maxLength" && (
-                    <p className="text-red-600">
-                      পাসওয়ার্ড অবশ্যই ১২ অক্ষরের কম হতে হবে।
-                    </p>
-                  )}
-                  {errors.password?.type === "pattern" && (
-                    <p className="text-red-600">
-                      অবশ্যই বড় হাতের অক্ষর, ছোট হাতের অক্ষর, সংখ্যা ও বিশেষ
-                      অক্ষর (!@#$&*) থাকতে হবে।
-                    </p>
-                  )}
                 </div>
 
-                <div className="form-btn grid grid-cols-12 gap-4">
-                  <div className="col-span-6">
-                    <button className="th-btn rounded-10 w-full" type="submit">
-                      {loading ? (
-                        <>
-                          সাইন আপ হচ্ছে
-                          <TbLoader3 className="text-[1.8rem] animate-spin ms-2" />
-                        </>
-                      ) : (
-                        <>
-                          সাইন আপ <i className="far fa-arrow-right ms-2"></i>
-                        </>
-                      )}
-                    </button>
+                <div className="form-group col-span-6">
+                  <div className="flex justify-between items-center">
+                    <label className="text-sm font-semibold">
+                      পুনরায় পাসওয়ার্ড
+                    </label>{" "}
+                    {errors.confirmPassword?.type === "required" && (
+                      <p className="!text-red-600 text-sm  mb-1 ">
+                        পুনরায় পাসওয়ার্ড আবশ্যক
+                      </p>
+                    )}
+                    {isPasswordMismatch && !errors.confirmPassword && (
+                      <p className="!text-red-600 text-sm mb-1">
+                        পাসওয়ার্ড মিলছে না।
+                      </p>
+                    )}
                   </div>
 
-                  <div className="col-span-6">
-                    <SocialSignIn />
-                  </div>
+                  <input
+                    type="password"
+                    className="form-control"
+                    placeholder="পুনরায় পাসওয়ার্ড"
+                    {...register("confirmPassword", {
+                      required: true,
+                    })}
+                  />
+                </div>
+
+                {/* Submit + Social Login */}
+                <div className="form-btn col-span-6">
+                  <button
+                    className="th-btn rounded-10 w-full cursor-pointer"
+                    type="submit"
+                  >
+                    {loading ? "সাইন আপ হচ্ছে" : "সাইন আপ"}
+                  </button>
+                </div>
+
+                <div className="col-span-6">
+                  <SocialSignIn />
                 </div>
               </div>
             </form>
           </div>
+          <div className="col-span-1"></div>
         </div>
       </div>
     </div>

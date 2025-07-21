@@ -3,31 +3,34 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { useForm } from "react-hook-form";
 import SocialSignIn from "./SocialSignIn";
 import useAuth from "@/hooks/useAuth";
-// import { TbLoader3 } from "react-icons/tb";
 
 const SignIn = () => {
   const { logIn } = useAuth();
   const router = useRouter();
   const [loading, setLoading] = useState(false);
 
-  const handleLogin = (event) => {
-    event.preventDefault();
-    const form = event.target;
-    const email = form.email.value;
-    const password = form.password.value;
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
+  const onSubmit = ({ email, password }) => {
+    setLoading(true);
     logIn(email, password)
       .then((result) => {
         const user = result.user;
         if (user) {
-          router.push("/"); // Redirect to home page
+          router.push("/");
           setLoading(false);
         }
       })
       .catch((err) => {
         console.error(err);
+        setLoading(false);
       });
   };
 
@@ -74,7 +77,7 @@ const SignIn = () => {
               </span>
             </div>
             <form
-              onSubmit={handleLogin}
+              onSubmit={handleSubmit(onSubmit)}
               className="input-transparent ajax-contact"
             >
               <div className="row">
@@ -82,13 +85,20 @@ const SignIn = () => {
                   <label className="text-sm font-semibold">ইমেল</label>
                   <input
                     type="email"
-                    name="email"
-                    autoFocus
-                    defaultValue="test@gmail.com"
-                    className="form-control"
                     placeholder="Email Address"
+                    className="form-control"
+                    {...register("email", {
+                      required: "ইমেল আবশ্যক",
+                    })}
+                    defaultValue="test@gmail.com"
                   />
+                  {errors.email && (
+                    <p className="text-red-500 text-sm mt-1">
+                      {errors.email.message}
+                    </p>
+                  )}
                 </div>
+
                 <div className="form-group col-md-12">
                   <div
                     className="flex items-center justify-between"
@@ -109,23 +119,29 @@ const SignIn = () => {
                   </div>
                   <input
                     type="password"
-                    name="password"
                     placeholder="Password"
                     className="form-control"
+                    {...register("password", {
+                      required: "পাসওয়ার্ড আবশ্যক",
+                    })}
                     defaultValue="Abc@123"
                   />
+                  {errors.password && (
+                    <p className="text-red-500 text-sm mt-1">
+                      {errors.password.message}
+                    </p>
+                  )}
                 </div>
+
                 <div className="form-btn grid grid-cols-12 gap-4">
                   <div className="col-span-6">
                     <button
                       className="th-btn style3 rounded-10 w-full"
                       type="submit"
-                      value="Login"
-                      onClick={() => setLoading(true)}
                     >
                       {loading ? (
                         <>
-                          লগইন হচ্ছে
+                          লগইন হচ্ছে...
                           {/* <TbLoader3 className="text-[1.8rem] animate-spin ms-2" /> */}
                         </>
                       ) : (
@@ -135,7 +151,6 @@ const SignIn = () => {
                       )}
                     </button>
                   </div>
-
                   <div className="col-span-6">
                     <SocialSignIn />
                   </div>

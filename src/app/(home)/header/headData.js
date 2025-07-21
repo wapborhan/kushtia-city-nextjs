@@ -31,4 +31,16 @@ export const navData = [
     name: "থানা-পুলিশ",
     link: "/police-station",
   },
+  {
+    id: 7,
+    name: "আরও",
+    link: "",
+    subMenu: [
+      {
+        id: 6,
+        name: "থানা-পুলিশ",
+        link: "/police-station",
+      },
+    ],
+  },
 ];

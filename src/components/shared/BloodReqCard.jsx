@@ -15,15 +15,8 @@ const BloodReqCard = ({ data, column }) => {
         <img src="assets/img/blood-request.jpg" alt="Team" />
       </div>
       <div className="icons">
-        {/* <a href={`sms:${connect}`} className="icon-btn arrow-icon">
-          <i className="fas fa-location-dot"></i>
-        </a> */}
-
         <a href={`sms:${connect}`} className="icon-btn arrow-icon">
-          <i className="fas fa-envelope"></i>
-        </a>
-        <a href={`tel:${connect}`} className="icon-btn arrow-icon">
-          <i className="fal fa-phone"></i>
+          <i className="fal fa-arrow-right"></i>
         </a>
       </div>
       <div className="box-content px-4 ">
@@ -32,10 +25,6 @@ const BloodReqCard = ({ data, column }) => {
         <span className="box-desig mt-1">রক্তদানের সময়ঃ 12 Feb 2025</span>
         <span className="box-desig mt-1">রক্তের পরিমাণঃ 1 ব্যাগ</span>
         <span className="box-desig mt-1">হাসপাতালঃ {location}</span>
-        <span className="box-desig mt-1">উপহারঃ </span>
-        <span className="read-more position-absolute bottom-0 end-0">
-          বিস্তারিতঃ
-        </span>
       </div>
     </div>
   );

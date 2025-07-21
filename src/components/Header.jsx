@@ -31,14 +31,27 @@ const Header = () => {
                     <li>
                       <Link href="/">নীড় পাতা</Link>
                     </li>
-                    {navData.map(({ id, link, name }) => {
+                    {navData.map(({ id, link, name, subMenu }) => {
                       const isActive = pathname === link;
-                      return (
+                      return subMenu ? (
+                        <li className="menu-item-has-children" key={id}>
+                          <a href={"#"}>{name}</a>
+                          <ul className="sub-menu">
+                            {subMenu.map(({ id, link, name }) => (
+                              <li key={id}>
+                                <Link
+                                  href={link}
+                                  className={isActive && "active"}
+                                >
+                                  {name}
+                                </Link>
+                              </li>
+                            ))}
+                          </ul>
+                        </li>
+                      ) : (
                         <li key={id}>
-                          <Link
-                            href={link}
-                            className={isActive ? "active" : ""}
-                          >
+                          <Link href={link} className={isActive && "active"}>
                             {name}
                           </Link>
                         </li>

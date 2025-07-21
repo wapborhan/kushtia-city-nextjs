@@ -55,8 +55,11 @@ const Donar = () => {
             </div>
           </div>
           <div className="donar">
-            <form onSubmit={onSubmitData} className="p-4 row">
-              <div className="upozila col-lg-5 col-md-4 col-12">
+            <form
+              onSubmit={onSubmitData}
+              className="p-4 flex gap-3 justify-between"
+            >
+              <div className="upozila w-full">
                 <Select
                   name="Upozila"
                   setData={setUpazila}
@@ -64,7 +67,7 @@ const Donar = () => {
                   disableCon={true}
                 />
               </div>
-              <div className="groups col-lg-5 col-md-4 col-12">
+              <div className="groups w-full">
                 <Select
                   name="Blood Group"
                   setData={setBloodGroup}
@@ -73,7 +76,7 @@ const Donar = () => {
                   className="blood-group"
                 />
               </div>
-              <div className="button col-lg-2 col-md-2 col-12">
+              <div className="button w-full">
                 <button
                   className="w-full border-0 px-5 rounded"
                   style={{ padding: "0.8rem" }}

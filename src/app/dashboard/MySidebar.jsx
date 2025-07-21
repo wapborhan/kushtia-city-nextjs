@@ -164,7 +164,7 @@ const MySidebar = (props) => {
                   {item.subMenu.map((subItem, subIndex) => (
                     <MenuItem
                       key={subIndex}
-                      component={<Link href={subItem.path} />}
+                      component={<Link href={`/dashboard/${subItem.path}`} />}
                       icon={
                         <i className={`far fas fab fa-solid ` + subItem.icon} />
                       }
@@ -179,7 +179,7 @@ const MySidebar = (props) => {
               return (
                 <MenuItem
                   key={index}
-                  component={<Link href={item.path} />}
+                  component={<Link href={`/dashboard/${item.path}`} />}
                   icon={<i className={`far fas fab fa-solid ` + item.icon} />}
                 >
                   {item.label}

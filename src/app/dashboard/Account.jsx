@@ -1,8 +1,12 @@
 "use client"; // If using Next.js App Router
 
+import useAuth from "@/hooks/useAuth";
+import { useRouter } from "next/navigation";
 import React, { useState, useRef, useEffect } from "react";
 
 const Account = ({ user }) => {
+  const router = useRouter();
+  const { logOut } = useAuth();
   const [showMenu, setShowMenu] = useState(false);
   const [showSubmenu, setShowSubmenu] = useState(false);
   const menuRef = useRef(null);
@@ -11,6 +15,16 @@ const Account = ({ user }) => {
   const closeMenu = () => {
     setShowMenu(false);
     setShowSubmenu(false);
+  };
+
+  const handleLogout = () => {
+    logOut()
+      .then((res) => {
+        router.push("/");
+      })
+      .catch((err) => {
+        console.error("Logout failed:", err);
+      });
   };
 
   useEffect(() => {
@@ -26,23 +40,18 @@ const Account = ({ user }) => {
   const menuItems = [
     {
       icon: <i className="fas fa-copy"></i>,
-      label: "Copy",
-      action: () => console.log("Copy clicked"),
+      label: "Account",
+      action: () => router.push("/dashboard/user/@wapborhan"),
     },
     {
       icon: <i className="fas fa-share-alt"></i>,
-      label: "Share",
-      action: () => console.log("Copy clicked"),
+      label: "Settings",
+      action: () => router.push("/dashboard/user/update"),
     },
     {
       icon: <i className="fas fa-pen"></i>,
-      label: "Rename",
-      action: () => console.log("Rename clicked"),
-    },
-    {
-      icon: <i className="fas fa-trash"></i>,
-      label: "Delete",
-      action: () => console.log("Delete clicked"),
+      label: "Logout",
+      action: () => handleLogout(),
     },
   ];
 
@@ -54,13 +63,10 @@ const Account = ({ user }) => {
   };
 
   return (
-    <div className="">
-      <button
-        onClick={toggleMenu}
-        className=" bg-blue-600 text-white rounded-md hover:bg-blue-700"
-      >
-        <img src={user?.photoURL} alt="P" className="w-8 h-8 rounded-full" />
-      </button>
+    <div className="cursor-pointer">
+      <div onClick={toggleMenu}>
+        <img src={user?.photoURL} alt="P" className="rounded-md shadow-md" />
+      </div>
 
       {showMenu && (
         <div
@@ -76,8 +82,8 @@ const Account = ({ user }) => {
             >
               <button
                 onClick={() => handleItemClick(item)}
-                className={`w-full px-4 py-2 text-left text-sm flex justify-between items-center dark:text-[#abc2d3] text-gray-700 hover:bg-gray-100 dark:hover:bg-slate-700 ${
-                  item.label === "Delete" ? "text-red-500" : ""
+                className={`w-full px-4 py-2 text-left text-sm flex justify-between items-center cursor-pointer rounded-md hover:bg-slate-500 hover:text-white ${
+                  item.label === "Logout" ? "text-red-500" : ""
                 }`}
               >
                 <span className="flex items-center gap-2">

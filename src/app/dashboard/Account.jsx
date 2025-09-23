@@ -4,9 +4,9 @@ import useAuth from "@/hooks/useAuth";
 import { useRouter } from "next/navigation";
 import React, { useState, useRef, useEffect } from "react";
 
-const Account = ({ user }) => {
+const Account = () => {
   const router = useRouter();
-  const { logOut } = useAuth();
+  const { logOut, user } = useAuth();
   const [showMenu, setShowMenu] = useState(false);
   const [showSubmenu, setShowSubmenu] = useState(false);
   const menuRef = useRef(null);
@@ -41,12 +41,12 @@ const Account = ({ user }) => {
     {
       icon: <i className="fas fa-copy"></i>,
       label: "Account",
-      action: () => router.push("/dashboard/user/@wapborhan"),
+      action: () => router.push(`/user/${user?.displayName}`),
     },
     {
       icon: <i className="fas fa-share-alt"></i>,
       label: "Settings",
-      action: () => router.push("/dashboard/user/update"),
+      action: () => router.push(`/dashboard/user/update/${user?.displayName}`),
     },
     {
       icon: <i className="fas fa-pen"></i>,

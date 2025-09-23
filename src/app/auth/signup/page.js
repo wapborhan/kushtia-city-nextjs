@@ -44,6 +44,7 @@ const SignUp = () => {
       // Prepare user info to save in DB
       const userInfo = {
         userName: formData.username,
+        name: "",
         email: formData.email,
         photo: "",
         gender: "",
@@ -228,7 +229,7 @@ const SignUp = () => {
                 </div>
 
                 <div className="col-span-6">
-                  <SocialSignIn />
+                  <SocialSignIn path="signup" />
                 </div>
               </div>
             </form>

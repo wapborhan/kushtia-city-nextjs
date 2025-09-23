@@ -41,7 +41,7 @@ const Header = () => {
                               <li key={id}>
                                 <Link
                                   href={link}
-                                  className={isActive && "active"}
+                                  className={isActive ? "active" : ""}
                                 >
                                   {name}
                                 </Link>
@@ -51,7 +51,10 @@ const Header = () => {
                         </li>
                       ) : (
                         <li key={id}>
-                          <Link href={link} className={isActive && "active"}>
+                          <Link
+                            href={link}
+                            className={isActive ? "active" : ""}
+                          >
                             {name}
                           </Link>
                         </li>

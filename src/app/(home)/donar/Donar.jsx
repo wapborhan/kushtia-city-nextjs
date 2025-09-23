@@ -11,7 +11,7 @@ const Donar = () => {
       }}
     >
       <div className="container">
-        <div className="flex justify-center items-center">
+        <div className="flex justify-between items-center">
           <div className="col-xl-6 col-lg-8">
             <div className="title-area text-center">
               <span className="sub-title2">

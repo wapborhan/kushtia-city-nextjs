@@ -3,6 +3,7 @@ import "@/app/assets/css/style.css";
 import "@/app/global.css";
 import PathnameWrapper from "./PathnameWrapper";
 import AuthProvider from "@/utils/AuthProvider";
+import MainWrapper from "./mainWrapper";
 
 export const metadata = {
   title: "কুষ্টিয়া সিটি",
@@ -81,7 +82,9 @@ export default async function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className="home-electrician">
-        <AuthProvider>{children}</AuthProvider>
+        <AuthProvider>
+          <MainWrapper>{children}</MainWrapper>
+        </AuthProvider>
       </body>
     </html>
   );

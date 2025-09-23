@@ -936,12 +936,12 @@
   scrollbar-width: thin !important;
 }
 
-body,
+/* body,
 html {
   scroll-behavior: auto !important;
   scrollbar-color: #fa2d39 #fff !important;
   scrollbar-width: thin !important;
-}
+} */
 
 body {
   font-family: var(--body-font);
@@ -19619,6 +19619,6 @@ input[type="number"]:disabled {
   cursor: default !important;
   background-color: var(--smoke-color) !important;
   color: var(--body-color) !important;
-  border: 1px solid var(--th-border-color) !important;
+  border: 1px solid #2d2d2d59 !important;
   box-shadow: none !important;
 }

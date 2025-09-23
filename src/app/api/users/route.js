@@ -1,11 +1,11 @@
+import User from "@/models/User";
 import { connectDatabase } from "@/utils/db";
 import { NextResponse } from "next/server";
 
 export const GET = async () => {
+  await connectDatabase();
   try {
-    const db = await connectDatabase();
-
-    const users = await db.collection("users").find({}).toArray();
+    const users = await User.find({});
 
     if (!users.length) {
       return NextResponse.json(
@@ -28,32 +28,43 @@ export const GET = async () => {
 };
 
 export const POST = async (request) => {
+  await connectDatabase();
   try {
+    const path = new URL(request.url).searchParams.get("path");
+    console.log(path);
+
     const userData = await request.json();
 
     if (!userData?.email) {
       return NextResponse.json({ error: "Email is required" }, { status: 400 });
     }
 
-    const db = await connectDatabase();
+    if (path === "signup") {
+      const existingUser = await User.findOne({ email: userData.email });
 
-    const existingUser = await db
-      .collection("users")
-      .findOne({ email: userData.email });
+      if (existingUser) {
+        return NextResponse.json(
+          {
+            message: "User with this email already exists",
+            data: existingUser,
+          },
+          { status: 409 }
+        );
+      }
 
-    if (existingUser) {
+      const result = await User.insertOne(userData);
       return NextResponse.json(
-        { message: "User with this email already exists", data: existingUser },
-        { status: 409 }
+        {
+          message: `${userData.email || "User"} account successfully created.`,
+          data: result,
+        },
+        { status: 200 }
       );
     }
-
-    const result = await db.collection("users").insertOne(userData);
-
     return NextResponse.json(
       {
-        message: `${userData.email || "User"} account successfully created.`,
-        data: result,
+        message: "Operation not performed (path is not 'signup')",
+        data: userData,
       },
       { status: 200 }
     );

@@ -3,55 +3,46 @@
 import { useForm } from "react-hook-form";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
+import useSingleUser from "@/hooks/useSingleUser";
+import { useParams } from "next/navigation";
 
 const UpdateUser = () => {
-  const [loading, setLoading] = useState(true);
   const [preview, setPreview] = useState("");
+  const params = useParams();
+  const { username } = params;
+  const [singleUser, isLoading, isError] = useSingleUser(username);
 
   const {
     register,
     handleSubmit,
     formState: { errors },
     setValue,
+    reset,
     watch,
   } = useForm();
 
+  // 🔹 When singleUser data changes, update the form
+  useEffect(() => {
+    if (singleUser) {
+      reset({
+        photo: singleUser.photo || "",
+        userName: singleUser.userName || "",
+        email: singleUser.email || "",
+        contNum: singleUser.contNum || "",
+        address: singleUser.address || "",
+        gender: singleUser.gender || "",
+        bloodGroup: singleUser.bloodGroup || "",
+      });
+      setPreview(singleUser.photo || "");
+    }
+  }, [singleUser, reset]);
+
   const onSubmit = (data) => {
     console.log("Updated User Data:", data);
-    // API call to update the user can go here
+    // 🔥 API call to update user goes here
   };
 
-  // Fetch user data on mount
-  useEffect(() => {
-    const fetchUser = async () => {
-      try {
-        const res = await fetch("http://localhost:3000/api/users");
-        const data = await res.json();
-
-        if (res.ok && data?.data?.length) {
-          const user = data.data[0]; // pick the first user (or filter by email)
-
-          // Set form default values
-          for (const key in user) {
-            if (key in user) {
-              setValue(key, user[key]);
-            }
-          }
-
-          // Set image preview
-          if (user.photo) setPreview(user.photo);
-        }
-      } catch (error) {
-        console.error("Fetch error:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchUser();
-  }, [setValue]);
-
-  if (loading) return <p className="text-center mt-10">Loading...</p>;
+  if (isLoading) return <p className="text-center mt-10">Loading...</p>;
 
   return (
     <div className="max-w-3xl mx-auto p-6 bg-white rounded-xl shadow-md mt-10">
@@ -92,13 +83,13 @@ const UpdateUser = () => {
             <div className="relative">
               <input
                 type="text"
-                className="w-full p-2 border rounded"
                 {...register("userName")}
                 disabled
+                className="w-full p-2 border rounded"
               />
               <Link
                 className="absolute top-1/2 text-white hover:text-red -translate-y-1/2 right-0 rounded-e-lg p-[15px] bg-[#101840]"
-                href="/dashboard/user/update/username"
+                href={`/dashboard/user/update/username/${username}`}
               >
                 Change
               </Link>
@@ -145,11 +136,9 @@ const UpdateUser = () => {
               className="w-full p-2 border rounded"
             >
               <option value="">Select</option>
-              {["Male", "Female", "Others"].map((group) => (
-                <option key={group} value={group}>
-                  {group}
-                </option>
-              ))}
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="Others">Others</option>
             </select>
           </div>
 

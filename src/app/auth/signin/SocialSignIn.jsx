@@ -1,18 +1,49 @@
 import useAuth from "@/hooks/useAuth";
 import "./SocialSignIn.css";
 import { useRouter } from "next/navigation";
+import useAxiosPublic from "@/hooks/useAxiosPublic";
 
-const SocialSignIn = () => {
-  const { googleSignIn } = useAuth();
+const SocialSignIn = ({ path }) => {
+  const { googleSignIn, updateUserProfile } = useAuth();
   const navigate = useRouter();
+  const axiosPublic = useAxiosPublic();
 
   const handleGoogleSignIn = () => {
     // Handle Google sign-in logic here
     googleSignIn()
       .then((result) => {
         const user = result.user;
+        const username = user?.email.split("@")[0].replace(/[.+\-_]/g, "");
+        updateUserProfile(username);
         if (user) {
-          navigate.push("/");
+          const userInfo = {
+            userName: username,
+            name: "",
+            email: user?.email,
+            photo: user?.photoURL,
+            gender: "",
+            badge: "",
+            contNum: "",
+            address: "",
+            role: "user",
+            status: "inactive",
+            bloodGroup: "",
+          };
+          axiosPublic
+            .post(`/api/users`, userInfo, {
+              params: { path: path },
+            })
+            .then((response) => {
+              if (response.status === 200) {
+                navigate.push("/");
+                console.log(response);
+              } else {
+                console.error("Failed to create user:", response.data.error);
+              }
+            })
+            .catch((error) => {
+              console.error("Error creating user:", error);
+            });
         }
       })
       .catch((error) => {
@@ -49,7 +80,9 @@ const SocialSignIn = () => {
             />
           </svg>
         </div>
-        Sign in with Google
+        <span className="uppercase">
+          {path === "signup" ? "সাইন আপ" : "লগইন"} করুণ গুগল এর মাধ্যমে
+        </span>
       </div>
     </div>
   );

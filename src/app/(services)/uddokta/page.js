@@ -6,7 +6,7 @@ const page = () => {
   return (
     <>
       <BreadCumb title="উদ্যোক্তা" />
-      {/* <Services /> */}
+      <Services />
     </>
   );
 };

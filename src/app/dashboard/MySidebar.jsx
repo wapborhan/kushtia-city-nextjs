@@ -149,7 +149,7 @@ const MySidebar = (props) => {
         </div>
         <Menu
           menuItemStyles={menuItemStyles}
-          className="sticky top-0 h-[80%] overflow-scroll"
+          className="h-[80%] overflow-y-scroll"
         >
           {menuData.map((item, index) => {
             if (item.subMenu) {
@@ -158,8 +158,8 @@ const MySidebar = (props) => {
                   key={index}
                   label={item.label}
                   icon={<i className={`far fas fab fa-solid ` + item.icon} />}
-                  defaultOpen={index === openSubMenu}
-                  onToggle={() => handleSubMenuClick(index)}
+                  open={openSubMenu === index} // control open with state
+                  onClick={() => handleSubMenuClick(index)} // set active menu
                 >
                   {item.subMenu.map((subItem, subIndex) => (
                     <MenuItem

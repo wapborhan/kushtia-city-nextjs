@@ -152,7 +152,7 @@ const SignIn = () => {
                     </button>
                   </div>
                   <div className="col-span-6">
-                    <SocialSignIn />
+                    <SocialSignIn path="signin" />
                   </div>
                 </div>
               </div>

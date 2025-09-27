@@ -5,6 +5,9 @@ import Account from "./Account";
 const Header = (props) => {
   const { user } = useAuth();
   const { setCollapsed, collapsed, broken, setToggled, toggled } = props;
+
+  console.log(user);
+
   return (
     <>
       <nav
@@ -35,7 +38,7 @@ const Header = (props) => {
         </h2>
         <div className="flex items-center gap-3">
           <div className="account btn-circle w-12 flex justify-center items-center h-12 ">
-            <Account user={{ photoURL: user?.photoURL }} />
+            <Account />
           </div>
         </div>
       </nav>

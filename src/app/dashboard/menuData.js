@@ -6,7 +6,7 @@ export const menuData = [
   },
   {
     label: "উদ্যোক্তা",
-    icon: "fa-bluesky",
+    icon: "fa-cart-shopping",
     subMenu: [
       {
         label: "উদ্যোক্তা যোগ করুন",
@@ -28,23 +28,23 @@ export const menuData = [
     subMenu: [
       {
         label: "রক্তদাতা যোগ করুন",
-        path: "donar/add",
+        path: "blood/donar/add",
         icon: "fa-circle-plus",
       },
 
       {
         label: "অনুরোধ যোগ করুন",
-        path: "blood/req",
+        path: "blood/request/add",
         icon: "fa-circle-plus",
       },
       {
         label: "রক্তদাতা তালিকা",
-        path: "donar/view",
+        path: "blood/donar/view",
         icon: "fa-eye",
       },
       {
         label: "অনুরোধ তালিকা",
-        path: "blood/req/view",
+        path: "blood/request/view",
         icon: "fa-eye",
       },
     ],

@@ -37,7 +37,7 @@ const Soon = () => {
           <div className="col-span-6 flex items-end w-full">
             <div className="error-imgs">
               <img
-                src="assets/img/shape/error_image.png"
+                src="/assets/img/shape/error_image.png"
                 alt="404 image"
                 className="w-fit"
               />

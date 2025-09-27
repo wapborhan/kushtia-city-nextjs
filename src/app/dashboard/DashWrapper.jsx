@@ -41,7 +41,9 @@ const DashWrapper = ({ children }) => {
             )}
             {children}
           </div>
-          {/* <Footer /> */}
+          <div className="credit flex justify-center items-center py-3 bg-[#1c244a] text-white">
+            2025
+          </div>
         </div>
       </div>
     </div>

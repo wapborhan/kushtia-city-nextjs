@@ -3,11 +3,16 @@ import Loader from "@/components/Loader";
 import useSingleUser from "@/hooks/useSingleUser";
 import { useParams } from "next/navigation";
 import "./reg.css";
+import { formatDateToDDMMMYYYY } from "@/components/DateFormat";
+import { useRouter } from "next/navigation";
 
 const UserProfile = () => {
   const params = useParams();
   const { username } = params;
   const [singleUser, isLoading, isError] = useSingleUser(username);
+  const router = useRouter();
+
+  // console.log(singleUser);
 
   if (isError) return <p>Failed to load user 😢</p>;
 
@@ -17,6 +22,14 @@ const UserProfile = () => {
         <Loader />
       ) : (
         <>
+          <div className="backHome relative">
+            <button
+              onClick={() => router.back()}
+              className=" absolute top-3 left-7 !bg-red-600 text-white rounded-md px-6 py-2 cursor-pointer"
+            >
+              Go Back
+            </button>
+          </div>
           <section className="cover-image-section">
             <header className="cover-hader-site">
               <img src="/assets/img/bg/service_bg_1.jpg" />
@@ -31,9 +44,9 @@ const UserProfile = () => {
                     <img
                       id="Profile_images"
                       src={
-                        singleUser?.["ছবির লিঙ্ক"]
-                          ? singleUser?.["ছবির লিঙ্ক"]
-                          : singleUser?.["লিঙ্গ"] === "পুরুষ"
+                        singleUser?.photo
+                          ? singleUser?.photo
+                          : singleUser?.gender === "পুরুষ"
                           ? "/assets/img/avater/male.png"
                           : "/assets/img/avater/female.png"
                       }
@@ -43,23 +56,12 @@ const UserProfile = () => {
                 </div>
               </div>
               <div className="profile-name-info">
-                <h6 style={{ fontSize: "1.1em", margin: "15px 0 0 0 " }}>
-                  নিবন্ধন নাম্বারঃ{" "}
-                  {singleUser?.["নিবন্ধন নাম্বার (ফর্মের সিরিয়াল)"]}
-                </h6>
-                <h1>
+                <h6 style={{ fontSize: "1.4em", margin: "10px 0 0 0 " }}>
                   <span className="pro-txt" id="profile_name">
-                    {singleUser?.নাম}
+                    {singleUser?.name}
+                    <span className="ms-2 text-black">{`(${singleUser?.userName})`}</span>
                   </span>
-                </h1>
-
-                <h2
-                  class="team-desig"
-                  style={{ fontSize: "1.3em" }}
-                  title="পিতার নাম"
-                >
-                  পিতার নামঃ {singleUser?.["পিতার নাম"]}
-                </h2>
+                </h6>
               </div>
               <div className="profile-button-site">
                 <div className="btn-site-pro">
@@ -96,7 +98,7 @@ const UserProfile = () => {
                   <h4>Intro</h4>
 
                   <p id="bio-text" style={{ textAlign: "center" }}>
-                    এসো মিলি প্রানের টানে, কিছু কথা কিছু কিছু গানে।
+                    bio
                   </p>
 
                   <button id="bio-edit-btn" className="edit-bio btn">
@@ -105,45 +107,49 @@ const UserProfile = () => {
 
                   <ul>
                     <li>
+                      <i className="fa-solid fa-clock"></i>যোগদান করেছেনঃ
+                      <span>
+                        {formatDateToDDMMMYYYY(singleUser?.createdAt)}
+                      </span>
+                    </li>{" "}
+                    <li>
+                      <i class="fa-solid fa-user"></i>লিঙ্গঃ
+                      <span>
+                        {singleUser?.gender === "male" ? "পুরুষ" : "মহিলা"}
+                      </span>
+                    </li>
+                    <li>
+                      <i className="fa-solid fa-mobile"></i>মোবাইলঃ
+                      <span>{singleUser?.contNum}</span>
+                    </li>
+                    <li>
+                      <i className="fa-solid fa-droplet"></i>ব্লাড গ্রুপঃ
+                      <span>{singleUser?.bloodGroup}</span>
+                    </li>
+                    <li>
                       <i className="fas fa-briefcase"></i> পেশা:
                       <span> {singleUser?.["বর্তমান পেশা"]}</span>
                     </li>{" "}
                     <li>
-                      <i class="fa-solid fa-building"></i> প্রতিষ্ঠান এর নাম:
+                      <i className="fa-solid fa-building"></i> প্রতিষ্ঠান এর
+                      নাম:
                       <span> {singleUser?.["প্রতিষ্ঠান এর নাম"]}</span>
                     </li>
                     <li>
                       <i className="fas fa-graduation-cap"></i> স্কুলঃ
-                      <span> ধরমপুর মাধ্যমিক বিদ্যালয়</span>
+                      <span></span>
+                    </li>{" "}
+                    <li>
+                      <i className="fas fa-graduation-cap"></i> কলেজঃ
+                      <span> </span>
                     </li>
                     <li>
-                      <i className="fas fa-home"></i> স্থায়ী ঠিকানাঃ
-                      <span>{singleUser?.["স্থায়ী ঠিকানা"]}</span>
+                      <i className="fas fa-map-marker-alt"></i>ঠিকানাঃ
+                      <span>{singleUser?.address}</span>
                     </li>
                     <li>
-                      <i className="fas fa-map-marker-alt"></i> বর্তমান ঠিকানাঃ
-                      <span>{singleUser?.["বর্তমান ঠিকানা"]}</span>
-                    </li>
-                    <li>
-                      <i className="fas fa-heart"></i>বৈবাহিক অবস্তাঃ
-                      <span>{singleUser?.["বৈবাহিক অবস্তা"]}</span>
-                    </li>
-                    <li>
-                      <i class="fa-solid fa-user"></i>লিঙ্গঃ
-                      <span>{singleUser?.["লিঙ্গ"]}</span>
-                    </li>
-                    <li>
-                      <i class="fa-solid fa-droplet"></i>ব্লাড গ্রুপঃ
-                      <span>{singleUser?.["ব্লাড গ্রুপ"]}</span>
-                    </li>
-                    <li>
-                      <i class="fa-solid fa-users"></i>বাচ্চার সংখ্যাঃ
-                      <span>{singleUser?.["বাচ্চার সংখ্যা"]}</span>
-                    </li>
-                    <li>
-                      <i class="fa-solid fa-graduation-cap"></i>এসএসসি সাল /
-                      ক্লাসঃ
-                      <span>{singleUser?.["এসএসসি সাল / ক্লাস"]}</span>
+                      <i className="fas fa-badge"></i>ব্যাজঃ
+                      <span>{singleUser?.badge}</span>
                     </li>
                     {/* <li>
                   <i className="fas fa-globe"></i>{" "}

@@ -178,7 +178,7 @@ We are actively seeking contributions in data verification, UI improvements, and
 Distributed under the MIT License. See `LICENSE` for more information.
 
 ```
-Copyright (c) 2023 Kushtia City Development Team
+Copyright (c) 2025 Kushtia City Development Team
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
